@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Dashboard</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/chart.js">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ecf0f5;
+        }
+
+        header {
+            background-color: #3498db;
+            color: #fff;
+            padding: 15px;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #2980b9;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px;
+            margin: 0 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        nav a:hover {
+            background-color: #1a5276;
+        }
+
+        section {
+            padding: 20px;
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            background-color: #fff;
+            padding: 20px;
+            margin: 10px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        canvas {
+            max-width: 100%;
+            height: auto;
+        }
+
+        footer {
+            background-color: #3498db;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1> Dashboard</h1>
+    </header>
+
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">Analytics</a>
+        <a href="#">Settings</a>
+    </nav>
+
+    <section>
+        <div class="card">
+            <h2>Users</h2>
+            <p>Total: 100</p>
+        </div>
+
+        <div class="card">
+            <h2>Revenue</h2>
+            <p>Today: $1000</p>
+        </div>
+
+        <div class="card">
+            <h2>Orders</h2>
+            <p>Pending: 5</p>
+        </div>
+
+        <div class="card">
+            <h2>Chart</h2>
+            <canvas id="myBarChart"></canvas>
+        </div>
+
+        <div class="card">
+            <h2>Other Data</h2>
+            <p>Some additional content here.</p>
+        </div>
+
+        <div class="card">
+            <h2>Pie Chart</h2>
+            <canvas id="myPieChart"></canvas>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 S&S group. All rights reserved.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Sample data for the bar chart
+        var barChartData = {
+            labels: ['January', 'February', 'March', 'April', 'May'],
+            datasets: [{
+                label: 'Sales',
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 1,
+                data: [65, 59, 80, 81, 56],
+            }]
+        };
+
+        // Sample data for the pie chart
+        var pieChartData = {
+            labels: ['Category A', 'Category B', 'Category C'],
+            datasets: [{
+                data: [30, 50, 20],
+                backgroundColor: ['#3498db', '#2ecc71', '#e74c3c'],
+            }]
+        };
+
+        // Create a bar chart
+        var ctxBar = document.getElementById('myBarChart').getContext('2d');
+        var myBarChart = new Chart(ctxBar, {
+            type: 'bar',
+            data: barChartData,
+        });
+
+        // Create a pie chart
+        var ctxPie = document.getElementById('myPieChart').getContext('2d');
+        var myPieChart = new Chart(ctxPie, {
+            type: 'pie',
+            data: pieChartData,
+        });
+    </script>
+</body>
+
+</html>
